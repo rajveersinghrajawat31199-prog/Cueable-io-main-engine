@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./videos/**/renders/**)",
+      "Read(**/node_modules/**)",
+      "Read(~/hyperframes-assets/sfx/**)"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "_doc": "Platform-FREE profile for any short ad video (LinkedIn, Meta, YouTube, anywhere). Machine curves are HYPOTHESES tuned for scroll-stopping (evidence grade O, see ad-creative/references/rules.md), stricter than launch films. Platform limits (length, aspect, fps, file size) are checked separately by ad-creative/scripts/check_export.py against a platform adapter.",
+  "format": "ad-creative",
+  "loop": false,
+  "machine": {
+    "hook":      {"event_frac": 0.018, "curve": [[0.5, 10], [1.0, 8], [2.0, 4], [4.0, 0]]},
+    "dead_time": {"still_frac": 0.00024, "curve": [[0.5, 10], [1.0, 8], [2.0, 4], [4.0, 0]]},
+    "variety":   {"event_frac": 0.006, "curve": [[2.0, 10], [3.0, 8], [5.0, 5], [8.0, 1]]}
+  },
+  "vision_extra": {
+    "hook_relevance": {"title": "Hook relevance", "question": "Does the first 2 s speak to a SPECIFIC person and pain (a role, a problem, a number) rather than showing a generic product shot or logo? Look at hook.png.",
+      "anchors": {"2": "logo or generic footage", "5": "product-first, audience implied", "8": "names the persona or pain in the first frames", "10": "the target buyer would feel called out"}},
+    "proof": {"title": "Proof", "question": "Is there concrete proof (a real UI moment, a number, a named customer, a demo of the result) rather than an unsupported claim? Numbers must be the brand's own or clearly labelled illustrative.",
+      "anchors": {"2": "claims only", "5": "one weak proof point", "8": "concrete and specific, labelled correctly", "10": "proof the buyer can verify or cannot argue with"}},
+    "cta_clear": {"title": "Clear ask", "question": "Is the next step explicit, singular, and matched to the offer (demo, guide, webinar)? Is it visible long enough to read?",
+      "anchors": {"2": "no ask or several asks", "5": "ask exists but vague or brief", "8": "one clear ask, readable, matches the offer", "10": "the ask feels like the natural end of the story"}},
+    "sound_off": {"title": "Works with sound off", "question": "Watch with the audio ignored: is the whole message carried by on-screen text/captions/visuals, are captions legible at phone size and clear of platform UI areas?",
+      "anchors": {"2": "meaning depends on audio", "5": "mostly clear, some lines lost", "8": "fully understandable silent, captions legible", "10": "designed silent-first, audio only adds polish"}},
+    "single_message": {"title": "One message", "question": "Does the ad carry exactly one idea for one persona?",
+      "anchors": {"2": "feature list", "5": "one main idea plus clutter", "8": "one idea, everything serves it", "10": "one idea, memorable in a sentence"}}
+  }
+}

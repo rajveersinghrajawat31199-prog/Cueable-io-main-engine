@@ -1,0 +1,12 @@
+{
+  "_doc": "Score curves: [[measured value, score], ...] piecewise linear, clamped. Format profiles override any key. event_frac = share of pixels that must change for a moment to count as a real event; still_frac = below this a step counts as 'nothing happening'.",
+  "format": "default",
+  "loop": false,
+  "machine": {
+    "hook":      {"event_frac": 0.018, "curve": [[0.5, 10], [1.5, 8], [3.0, 5], [6.0, 1]]},
+    "dead_time": {"still_frac": 0.00024, "curve": [[0.5, 10], [1.2, 8], [2.5, 4], [5.0, 0]]},
+    "variety":   {"event_frac": 0.006, "curve": [[2.5, 10], [4.0, 8], [6.0, 5], [10.0, 1]]},
+    "loop_seam": {"curve": [[1, 10], [2, 8], [4, 4], [8, 0]]},
+    "beat_alive":{"curve": [[0.5, 0], [0.8, 4], [0.95, 8], [1.0, 10]]}
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "pollo-generate": {
+      "source": "polloaiofficial/skills",
+      "sourceType": "github",
+      "skillPath": "skills/pollo-generate/SKILL.md",
+      "computedHash": "5b371946d3a7b968f38e78d1be856b1ad265b374bb9621d2631a583a372b2c1a"
+    }
+  }
+}

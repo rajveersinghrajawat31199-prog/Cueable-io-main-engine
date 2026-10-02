@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080, height=1920">
+<title>UI morph loop</title>
+<style>
+@font-face{font-family:'DM Sans';src:url('assets/fonts/DMSans-var.woff2') format('woff2');font-weight:100 1000;font-style:normal;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('assets/fonts/GeistMono-normal-latin.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+:root{--canvas:#E9EDE8;--ink:#101613;--paper:#FFFFFF;--accent:#2B59FF;--mute:#7C877F;--line:#DCE1DB}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--canvas);font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;color:var(--ink)}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden}
+#stage{position:absolute;inset:0}
+#world{position:absolute;inset:0}
+/* the one shape that never cuts */
+#shape{position:absolute;overflow:hidden;will-change:auto}
+.layer{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);white-space:nowrap;visibility:hidden}
+.abs{position:absolute}
+.mono{font:500 26px/1 'Geist Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+/* logo */
+#logoDot{transform-origin:120px 120px}
+/* cta */
+#cta{display:grid;place-items:center;font:600 66px/1 'DM Sans',sans-serif;letter-spacing:-.025em;color:#fff}
+/* email */
+#emailTxt{left:56px;top:0;height:170px;line-height:170px;font:500 54px/170px 'DM Sans',sans-serif;letter-spacing:-.02em}
+#caret{display:inline-block;width:5px;height:60px;background:var(--accent);vertical-align:-10px;margin-left:4px}
+#emailGo{right:30px;top:30px;width:110px;height:110px;border-radius:55px;background:var(--accent);display:grid;place-items:center}
+/* dash */
+#dashLabel{left:52px;top:52px}
+#dashNum{left:48px;top:118px;font:700 150px/1 'DM Sans',sans-serif;letter-spacing:-.045em}
+#dashDelta{left:52px;top:300px;height:64px;padding:0 26px;border-radius:32px;background:var(--accent);color:#fff;font:600 34px/64px 'DM Sans',sans-serif;transform-origin:0 50%}
+#seg{right:40px;top:36px;width:316px;height:72px;border-radius:36px;background:#EEF1ED;padding:8px}
+#segHi{left:8px;top:8px;height:56px;border-radius:28px;background:#DCE4FF}
+.segL{top:8px;height:56px;width:150px;text-align:center;font:600 30px/56px 'DM Sans',sans-serif}
+#bars .b{position:absolute;bottom:0;width:84px;border-radius:20px;background:var(--line)}
+#bars .b.hot{background:var(--accent)}
+/* chart */
+#tip{padding:0 24px;height:64px;border-radius:32px;background:var(--ink);color:#fff;font:600 34px/64px 'DM Sans',sans-serif;transform-origin:100% 100%}
+/* palette */
+#palSearch{left:36px;top:36px;width:788px;height:88px;border-radius:24px;background:#F1F4F0}
+#palQ{left:28px;top:0;line-height:88px;font:500 40px/88px 'DM Sans',sans-serif;color:var(--mute)}
+.key{width:56px;height:52px;border-radius:14px;background:#fff;border:2px solid var(--line);font:600 26px/48px 'Geist Mono',monospace;text-align:center;color:var(--ink)}
+#palHi{left:24px;width:812px;border-radius:24px;background:#E6ECFF}
+.pRow{left:24px;width:812px;height:100px}
+.pRow .ic{left:28px;top:26px;width:48px;height:48px;border-radius:14px;background:var(--ink)}
+.pRow .lb{left:100px;top:0;line-height:100px;font:600 42px/100px 'DM Sans',sans-serif;letter-spacing:-.02em}
+.pRow .kb{right:28px;top:0;line-height:100px}
+/* toast */
+#toastIc{left:34px;top:30px;width:80px;height:80px;border-radius:40px;background:var(--accent);display:grid;place-items:center}
+#toastTx{left:144px;top:0;line-height:140px;font:600 50px/140px 'DM Sans',sans-serif;color:#fff;letter-spacing:-.02em}
+/* cursor: oversized, ink body + white stroke (canvas is light) */
+#cursor{position:absolute;left:0;top:0;z-index:30;pointer-events:none;filter:drop-shadow(0 6px 10px rgba(16,22,19,.28));will-change:transform}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="ui-morph" data-start="0" data-width="1080" data-height="1920" data-duration="16">
+  <div id="stage">
+    <div id="world">
+      <div id="shape">
+
+        <div class="layer" data-layout-allow-overflow data-mlayer="logo">
+          <svg width="240" height="240" viewBox="0 0 240 240"><circle cx="120" cy="120" r="50" fill="none" stroke="#fff" stroke-width="16"/><circle id="logoDot" cx="120" cy="120" r="16" fill="#fff"/></svg>
+        </div>
+
+        <div class="layer" data-layout-allow-overflow data-mlayer="cta"><div id="cta" class="abs" style="inset:0">Get started</div></div>
+
+        <div class="layer" data-layout-allow-overflow data-mlayer="email">
+          <div id="emailTxt" class="abs"><span id="emailTyped"></span><span id="caret"></span></div>
+          <div id="emailGo" class="abs"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+
+        <div class="layer" data-layout-allow-overflow data-mlayer="loader">
+          <svg id="spin" class="abs" style="left:35px;top:35px" width="100" height="100" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="40" stroke="#101613" stroke-opacity=".12" stroke-width="10"/><path d="M50 10a40 40 0 0 1 40 40" stroke="#2B59FF" stroke-width="10" stroke-linecap="round"/></svg>
+        </div>
+
+        <div class="layer" data-layout-allow-overflow data-mlayer="check">
+          <svg class="abs" style="left:35px;top:35px" width="100" height="100" viewBox="0 0 100 100" fill="none"><path id="checkPath" d="M24 52l17 17 35-38" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <div class="layer" data-layout-allow-overflow data-mlayer="dash">
+          <div id="dashLabel" class="abs mono">This week · Revenue</div>
+          <div id="dashNum" class="abs">$0</div>
+          <div id="dashDelta" class="abs">+12.4%</div>
+          <div id="seg" class="abs"><div id="segHi" class="abs"></div><div class="abs segL" style="left:8px">Summary</div><div class="abs segL" style="left:158px">Trend</div></div>
+          <div id="bars" class="abs" style="left:52px;right:52px;top:430px;height:230px"></div>
+        </div>
+
+        <div class="layer" data-layout-allow-overflow data-mlayer="chart">
+          <div class="abs mono" style="left:52px;top:52px">Revenue · last 7 days</div>
+          <svg id="chartSvg" class="abs" style="left:0;top:0" width="940" height="800" viewBox="0 0 940 800" fill="none">
+            <g id="grid" stroke="#101613" stroke-opacity=".08" stroke-width="2"></g>
+            <path id="area" d="" fill="#2B59FF" fill-opacity=".10"/>
+            <path id="line" d="" stroke="#2B59FF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle id="ping" r="16" fill="none" stroke="#2B59FF" stroke-width="6" opacity="0"/>
+            <circle id="endDot" r="16" fill="#2B59FF" stroke="#fff" stroke-width="6"/>
+          </svg>
+          <div id="tip" class="abs">$8.4k</div>
+        </div>
+
+        <div class="layer" data-layout-allow-overflow data-mlayer="palette">
+          <div id="palSearch" class="abs"><div id="palQ" class="abs">Type a command…</div><div class="abs key" style="right:92px;top:18px">⌘</div><div class="abs key" style="right:28px;top:18px">K</div></div>
+          <div id="palHi" class="abs"></div>
+          <div class="abs pRow" style="top:160px"><div class="abs ic"></div><div class="abs lb">Open dashboard</div><div class="abs kb mono">G D</div></div>
+          <div class="abs pRow" style="top:260px"><div class="abs ic"></div><div class="abs lb">Invite teammate</div><div class="abs kb mono">I</div></div>
+          <div class="abs pRow" style="top:360px"><div class="abs ic"></div><div class="abs lb">Export report</div><div class="abs kb mono">⌘ E</div></div>
+        </div>
+
+        <div class="layer" data-layout-allow-overflow data-mlayer="toast">
+          <div id="toastIc" class="abs"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+          <div id="toastTx" class="abs">Report exported</div>
+        </div>
+
+      </div>
+      <svg id="cursor" width="130" height="130" viewBox="0 0 24 24"><path d="M4 2 L4 19 L8.6 14.9 L11.5 21.6 L14.1 20.4 L11.2 13.8 L17.2 13.6 Z" fill="#101613" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="lib/morph.js"></script>
+<script src="film.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+window.__timelines["ui-morph"] = window.__film.timeline;
+</script>
+</body>
+</html>

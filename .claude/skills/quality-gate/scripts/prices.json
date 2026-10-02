@@ -1,0 +1,9 @@
+{
+  "_doc": "USD per million tokens, from Anthropic's model overview (platform.claude.com/docs, read 2026-09-28). Sonnet 5.5 is not in that table: null = unknown, set it yourself before trusting a cost line. Batch is 50% off, cache reads are a fraction of input: this table is the plain API price.",
+  "claude-fable-5-1": {"in": 10, "out": 50},
+  "claude-opus-5-5":  {"in": 4,  "out": 20},
+  "claude-opus-5":    {"in": 5,  "out": 25},
+  "claude-sonnet-5":  {"in": 2,  "out": 10},
+  "claude-sonnet-5-5":{"in": null, "out": null},
+  "claude-haiku-4-5": {"in": 1,  "out": 5}
+}

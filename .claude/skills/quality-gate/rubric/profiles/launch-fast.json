@@ -1,0 +1,76 @@
+{
+  "format": "launch-fast",
+  "loop": false,
+  "machine": {
+    "hook": {
+      "event_frac": 0.018,
+      "curve": [
+        [
+          1.0,
+          10
+        ],
+        [
+          2.5,
+          8
+        ],
+        [
+          4.0,
+          5
+        ],
+        [
+          7.0,
+          1
+        ]
+      ]
+    },
+    "dead_time": {
+      "still_frac": 0.00024,
+      "curve": [
+        [
+          0.7,
+          10
+        ],
+        [
+          1.5,
+          8
+        ],
+        [
+          3.0,
+          4
+        ],
+        [
+          6.0,
+          0
+        ]
+      ]
+    },
+    "variety": {
+      "event_frac": 0.006,
+      "curve": [
+        [
+          3.0,
+          10
+        ],
+        [
+          5.0,
+          8
+        ],
+        [
+          7.0,
+          5
+        ],
+        [
+          11.0,
+          1
+        ]
+      ]
+    },
+    "audio": {
+      "ignore": [],
+      "why": "Fast-paced brand film (music-driven). NOTHING is discounted: a voice gap, a silent stretch or an orphan cue counts. Added after the Cueable v1 review, where discounting voice gaps hid the exact pacing problem the customer objected to. critic_args --allow-edge only tells the critic the gradient/photo plates are full-bleed on purpose (edge-touch is a picture check, not an audio one).",
+      "critic_args": [
+        "--allow-edge"
+      ]
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "format": "launch-video",
+  "loop": false,
+  "machine": {
+    "hook": {
+      "event_frac": 0.018,
+      "curve": [
+        [
+          1.0,
+          10
+        ],
+        [
+          2.5,
+          8
+        ],
+        [
+          4.0,
+          5
+        ],
+        [
+          7.0,
+          1
+        ]
+      ]
+    },
+    "dead_time": {
+      "still_frac": 0.00024,
+      "curve": [
+        [
+          0.7,
+          10
+        ],
+        [
+          1.5,
+          8
+        ],
+        [
+          3.0,
+          4
+        ],
+        [
+          6.0,
+          0
+        ]
+      ],
+      "tail_exempt_s": 4.0
+    },
+    "variety": {
+      "event_frac": 0.006,
+      "curve": [
+        [
+          3.0,
+          10
+        ],
+        [
+          5.0,
+          8
+        ],
+        [
+          7.0,
+          5
+        ],
+        [
+          11.0,
+          1
+        ]
+      ]
+    },
+    "audio": {
+      "ignore": [
+        "voice gap",
+        "first SFX at 0.00",
+        "orphan SFX"
+      ],
+      "why": "launch-video playbook (critic-gates.md): a 1-3 s voice gap is expected for UI-action tails and is filled with SFX; a single-file SFX mix makes the critic read one cue at 0.00 s. Every other audio warning still counts."
+    },
+    "coverage": {
+      "pct": 90,
+      "thr": 4,
+      "curve": [
+        [
+          0.25,
+          10
+        ],
+        [
+          0.4,
+          8
+        ],
+        [
+          0.52,
+          4
+        ],
+        [
+          0.65,
+          1
+        ]
+      ],
+      "why": "premium restraint: sustained ink over ~40% of the frame reads loud. Measured: the cluttered ShopOS cut p90 = 54% (score ~3)."
+    },
+    "movers": {
+      "window_s": 3.0,
+      "thr": 5,
+      "min_area": 0.0015,
+      "merge": 4,
+      "curve": [
+        [
+          1.5,
+          10
+        ],
+        [
+          2.5,
+          8
+        ],
+        [
+          3.5,
+          5
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "why": "premium restraint: more than ~2.5 separate things moving at once for 3 s reads busy. Measured: the cluttered ShopOS hook = 3.7 (score ~5), product frames 1.2-1.5."
+    }
+  }
+}

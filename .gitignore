@@ -1,0 +1,52 @@
+# ── macOS ───────────────────────────────────────────────────────────────
+.DS_Store
+
+# ── Secrets: never commit ───────────────────────────────────────────────
+# API keys are read from the environment (ELEVENLABS_API_KEY etc.), loaded locally
+# from ~/.config/hyperframes/secrets.env, which lives outside this folder.
+.env
+.env.*
+*.env
+secrets.*
+credentials*
+.npmrc
+.netrc
+*.pem
+*.key
+*.p12
+id_rsa*
+id_ed25519*
+.claude/settings.local.json
+
+# ── Libraries / dependencies: installed or downloaded, never committed ──
+node_modules/
+vendor/
+*.min.js
+.venv/
+venv/
+site-packages/
+__pycache__/
+*.pyc
+/scene-library/
+
+# ── Video projects: the whole folder stays local (~6 GB of renders, media, captures) ──
+/videos/
+renders/
+.thumbnails/
+
+# ── Audio / video binaries (GitHub rejects files over 100 MB; SFX have licences) ──
+*.mp4
+*.mov
+*.webm
+*.mkv
+*.avi
+*.wav
+*.mp3
+*.m4a
+*.aac
+*.flac
+*.ogg
+*.opus
+
+# ── Machine-local preview config (points at whichever video was last previewed) ──
+/.claude/launch.json

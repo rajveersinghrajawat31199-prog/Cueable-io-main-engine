@@ -1,0 +1,20 @@
+{
+  "_doc": "Named light-UI SFX palette. Paths are relative to ~/hyperframes-assets/sfx (shared library). 'glob' resolves Sonniss files whose folder names vary. Every prepared file is peak-normalised to -11 dBFS; per-cue volume then sits it under the voice (cap = max volume). No booms, risers or sci-fi whooshes: the soft card-slides are the only 'whoosh'. Nothing at t=0.",
+  "palette": {
+    "click":  {"file": "kenney/interface-sounds/Audio/click_003.ogg",  "cap": 0.5,  "use": "cursor press"},
+    "click2": {"file": "kenney/interface-sounds/Audio/click_004.ogg",  "cap": 0.4,  "use": "send / submit"},
+    "tick":   {"file": "kenney/interface-sounds/Audio/tick_001.ogg",   "cap": 0.3,  "use": "typing (sparse: every 3rd char)"},
+    "tick2":  {"file": "kenney/interface-sounds/Audio/tick_002.ogg",   "cap": 0.28, "use": "typing, alt"},
+    "tap":    {"file": "kenney/interface-sounds/Audio/select_007.ogg", "cap": 0.3,  "use": "soft item arrival / word tap"},
+    "select": {"file": "kenney/interface-sounds/Audio/select_003.ogg", "cap": 0.3,  "use": "highlight lands"},
+    "toggle": {"file": "kenney/interface-sounds/Audio/toggle_001.ogg", "cap": 0.32, "use": "status chip flip / checklist tick"},
+    "slide1": {"file": "kenney/casino-audio/Audio/card-slide-1.ogg",   "cap": 0.25, "use": "zoom-through seam (soft whoosh)"},
+    "slide2": {"file": "kenney/casino-audio/Audio/card-slide-2.ogg",   "cap": 0.22, "use": "panel swap"},
+    "slide3": {"file": "kenney/casino-audio/Audio/card-slide-3.ogg",   "cap": 0.25, "use": "seam, alt"},
+    "pop":    {"glob": "sonniss-gdc/2024/*/*Kawaii UI*/UIClick_Hand Pop UI Diminished 1_*.wav", "cap": 0.35, "use": "single accent (underline lands, badge)"},
+    "up":     {"glob": "sonniss-gdc/2024/*/*Activation 2*/UIMisc_Feedback 36 up_*.wav",         "cap": 0.3,  "use": "count-up begins / star bloom"},
+    "pop2":   {"glob": "sonniss-gdc/2024/*/*Kawaii UI*/TOONPop_Syringe Pop 4_*.wav", "dur": 0.34, "fade_st": 0.16, "fade_d": 0.16, "cap": 0.32, "use": "one pop per element popping in (rotate pop2/pop2a/pop2b)"},
+    "pop2a":  {"glob": "sonniss-gdc/2024/*/*Kawaii UI*/TOONPop_Syringe Pop 4_*.wav", "dur": 0.34, "fade_st": 0.16, "fade_d": 0.16, "pitch": 1.16, "cap": 0.32},
+    "pop2b":  {"glob": "sonniss-gdc/2024/*/*Kawaii UI*/TOONPop_Syringe Pop 4_*.wav", "dur": 0.34, "fade_st": 0.16, "fade_d": 0.16, "pitch": 0.88, "cap": 0.32}
+  }
+}

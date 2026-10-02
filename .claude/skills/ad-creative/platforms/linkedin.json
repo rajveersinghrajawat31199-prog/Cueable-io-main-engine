@@ -1,0 +1,234 @@
+{
+  "_doc": "PLATFORM ADAPTER: only the limits of a destination. It is data, not strategy: swap or add a file per platform. Values marked verified were read from LinkedIn's own help page on the date below. Anything not stated by LinkedIn is listed under `not_stated` and must not be assumed.",
+  "platform": "linkedin",
+  "placement": "Sponsored Content video ad (PAID feed). Organic Page video has separate limits under `organic`.",
+  "verified": {
+    "date": "2026-09-29",
+    "grade": "V",
+    "sources": [
+      "https://www.linkedin.com/help/lms/answer/a424737 (Video ads advertising specifications; page said 'Last updated: 2 months ago')",
+      "https://business.linkedin.com/marketing-solutions/success/best-practices/video-ad-tips (LinkedIn best practices for video ads)"
+    ]
+  },
+  "video": {
+    "container": [
+      "mp4"
+    ],
+    "codec": [
+      "h264",
+      "vp8"
+    ],
+    "fps_rule": "PAID ads: LinkedIn's video-ads spec says 'Less than 30 FPS' (V), confirmed by the studio owner's own paid-ad experience. ORGANIC Page video accepts 10-60 FPS (V, see `organic`). Studio policy: masters stay 60 fps; a PAID export is converted to `fps_paid_export` by frame BLENDING; organic keeps the master's rate.",
+    "fps_max_exclusive": 30,
+    "file_size_bytes": {
+      "min": 76800,
+      "max": 524288000
+    },
+    "duration_s": {
+      "min": 3,
+      "max": 1800,
+      "recommended": [
+        15,
+        30
+      ],
+      "recommended_why": "LinkedIn: '15-30 seconds long, so they can qualify for all possible placements'",
+      "instream_max": 90
+    },
+    "aspects": {
+      "16:9": {
+        "recommended": [
+          1920,
+          1080
+        ],
+        "alt_recommended": [
+          1200,
+          675
+        ],
+        "min": [
+          640,
+          360
+        ],
+        "max": [
+          1920,
+          1080
+        ]
+      },
+      "1:1": {
+        "recommended": [
+          1080,
+          1080
+        ],
+        "min": [
+          360,
+          360
+        ],
+        "max": [
+          1920,
+          1920
+        ],
+        "recommended_note": "LinkedIn lists no recommended size for 1:1; 1080x1080 is our choice within its min/max"
+      },
+      "4:5": {
+        "recommended": [
+          720,
+          900
+        ],
+        "min": [
+          360,
+          450
+        ],
+        "max": [
+          1080,
+          1350
+        ]
+      },
+      "9:16": {
+        "recommended": [
+          720,
+          1280
+        ],
+        "min": [
+          360,
+          640
+        ],
+        "max": [
+          1080,
+          1920
+        ]
+      }
+    },
+    "audio": {
+      "codec": [
+        "aac"
+      ],
+      "note": "LinkedIn lists 'AAC or MPEG4' and 'Less than 64KHz' (as written). We use AAC 44.1 kHz stereo."
+    },
+    "captions": {
+      "upload_format": "SRT (text only)",
+      "burn_in": "LinkedIn: 'Consider burning in video subtitles'"
+    },
+    "thumbnail": {
+      "format": [
+        "jpg",
+        "png"
+      ],
+      "max_bytes": 2097152,
+      "aspect": "match the video"
+    },
+    "fps_policy": "required_for_paid",
+    "fps_paid_export": 29.97,
+    "fps_paid_export_why": "satisfies both 'less than 30' (LinkedIn's page) and '30 or less' (owner's wording); visually identical to 30",
+    "fps_overrides": {
+      "options": [
+        30,
+        29.97,
+        25,
+        24
+      ],
+      "how": "export_for.py --fps N (frame BLENDING, not dropping)"
+    }
+  },
+  "copy": {
+    "name": {
+      "max": 255,
+      "note": "optional"
+    },
+    "introductory_text": {
+      "recommended": 150,
+      "max": 3000,
+      "note": "up to 10 emojis; URLs over 23 chars are shortened"
+    },
+    "headline": {
+      "recommended": 70,
+      "max": 200,
+      "note": "recommended length avoids truncation on most devices"
+    },
+    "destination_url": {
+      "max": 2000,
+      "note": "must include http:// or https://"
+    }
+  },
+  "guidance": [
+    {
+      "rule": "Short videos are more likely to be watched to completion: LinkedIn data (2025) reports 7-15 s videos with up to a 300% lift in completion rates.",
+      "grade": "V",
+      "note": "LinkedIn's own statistic; for demand generation LinkedIn says longer content performed equivalently to shorter videos"
+    },
+    {
+      "rule": "'Establish your point in the first 5 seconds, then drive it home'; 'show what you want your audience to see in the first 10 seconds'.",
+      "grade": "V"
+    },
+    {
+      "rule": "'Think like a silent film director': a large portion of members watch with sound off; consider burning in subtitles.",
+      "grade": "V"
+    },
+    {
+      "rule": "Feature a clear CTA so the audience knows how to act.",
+      "grade": "V"
+    },
+    {
+      "rule": "In-stream placements may not always include a CTA; on mobile the landing page shows below the video for website visit/conversion objectives.",
+      "grade": "V"
+    }
+  ],
+  "ad_formats_seen": "Search summaries of LinkedIn's pages list: single image, carousel, video, document, thought leader ads, lead gen forms, event ads (grade S: not fetched from the source page; verify before building for them).",
+  "not_stated": [
+    "whether 9:16 video is mobile-only or how it is shown on desktop (page says nothing)",
+    "safe zones / UI overlay areas for captions",
+    "Thought Leader Ads video requirements",
+    "exact metric names in Campaign Manager for view / completion rates (verify in the account)"
+  ],
+  "organic": {
+    "verified": {
+      "date": "2026-09-29",
+      "grade": "V",
+      "source": "https://www.linkedin.com/help/linkedin/answer/a1311816 (Video specifications for your LinkedIn Pages and Career Pages; page covers organic/non-paid video only)"
+    },
+    "containers": [
+      "mp4",
+      "mkv",
+      "webm",
+      "flv",
+      "asf",
+      "wmv",
+      "mpeg"
+    ],
+    "not_supported": [
+      "avi",
+      "mov",
+      "quicktime"
+    ],
+    "fps": {
+      "min": 10,
+      "max": 60
+    },
+    "file_size_bytes": {
+      "min": 76800,
+      "max": 5368709120
+    },
+    "duration_s": {
+      "min": 3,
+      "max": 600
+    },
+    "resolution": {
+      "min": [
+        256,
+        144
+      ],
+      "max": [
+        4096,
+        2304
+      ]
+    },
+    "aspect_ratio": {
+      "min": 0.41667,
+      "max": 2.4,
+      "as_written": "1:2.4 - 2.4:1"
+    },
+    "bitrate_bps": {
+      "min": 192000,
+      "max": 30000000
+    },
+    "captions": "not stated on that page"
+  }
+}

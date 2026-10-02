@@ -1,0 +1,22 @@
+{
+  "brief_version": 1,
+  "_doc": "The contract between a performance agent (strategy) and the video studio (production). Platform-neutral except `platform`. Validate with scripts/validate_brief.py; expand to named variants with scripts/make_variants.py. NOTHING here may be invented: proof must have a source or be labelled illustrative.",
+  "brand": {"name": "<brand>", "url": "<https://...>", "category": "b2b-saas", "tone": "<3-5 words>", "assets_ready": false, "assets_note": "<logo, fonts, UI screenshots/recording, tokens supplied by the customer>"},
+  "platform": "linkedin",
+  "objective": "leads",
+  "goal_metric": "cost per lead",
+  "offer": {"type": "demo", "name": "<what the viewer gets>", "landing_url": "<https://...>", "why_this_offer": "<one sentence>"},
+  "proof": [
+    {"id": "p1", "type": "metric", "text": "<the claim>", "source": "<where the brand published it, or 'customer-supplied 2026-09-29'>", "illustrative": false}
+  ],
+  "personas": [
+    {"id": "ops-director", "function": "<job function>", "seniority": "director", "pain": "<the pain in their words>", "language": "<terms they use>"}
+  ],
+  "concepts": [
+    {"id": "c1", "angle": "<one-line idea>", "format": "demo", "hook": {"type": "pain-callout", "line": "<the first line the viewer sees>"}, "proof_ids": ["p1"], "cta": "<one ask, matches offer>", "lengths_s": [15, 30], "notes": ""}
+  ],
+  "deliver": {"use": "paid", "aspects": ["1:1", "9:16"], "note": "which native aspects to author; the adapter lists what the platform supports"},
+  "test_plan": {"structure": "challenger vs incumbent", "concepts_per_set": 4, "min_impressions_per_creative": 10000, "judge_after": "several days and more than one run, not one session", "refresh_after_days": 30},
+  "risks": ["<what could make this fail, honestly>"],
+  "unverified": ["<claims/specs still to verify>"]
+}

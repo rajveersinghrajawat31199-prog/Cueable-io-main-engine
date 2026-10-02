@@ -1,0 +1,41 @@
+{
+  "brand": "Bolna",
+  "url": "https://www.bolna.ai/",
+  "category": "Voice AI platform for Indian languages",
+  "markLogic": {
+    "description": "Audio waveform bars + wordmark 'BOLNA'",
+    "encoding": "The waveform IS the product — every bar is a voice call being handled. The varying heights show natural conversation cadence.",
+    "diagramReading": "If the mark were a diagram of the product, it would be a live audio stream: calls coming in, AI responding, conversations flowing naturally in every language."
+  },
+  "invertedClaim": "Unlike chatbots that text, Bolna puts AI on the phone — in your customer's own language, with the speed and nuance of a human.",
+  "tension": {
+    "says": "Voice AI built for India — go live in minutes.",
+    "shows": "Production-grade telephony stack: 10+ vernacular languages, <300ms latency, 250+ concurrent calls, enterprise data residency, 20+ model integrations, full API control.",
+    "whichIsMoreTrue": "shows"
+  },
+  "visualRules": [
+    { "rule": "Dark navy canvas as the ground; the product lives in darkness like a phone call at night." },
+    { "rule": "Waveform motif in structure — audio bars pulse, ripple, assemble. Never decorative squiggles." },
+    { "rule": "Teal accent carries every 'active/live' moment — a call connecting, an agent responding, a stat counting." },
+    { "rule": "Vernacular text is infrastructure, not novelty — show Hindi/Tamil/Telugu as naturally as English." },
+    { "rule": "Proof beats claims: show the agent card, the API call, the latency number. Never a static benefit sentence." },
+    { "rule": "Sound-first energy: the video should feel like listening to a conversation, not reading a slideshow." }
+  ],
+  "motionInference": {
+    "entryDirection": "elements emerge from center outward (like sound radiating from a source)"
+  },
+  "failureModes": [
+    { "mode": "Generic chatbot/AI slideshow (purple gradients, robot emoji)", "whyItRuins": "Bolna is voice, not chat. Phone calls, not text bubbles.", "category": "motion" },
+    { "mode": "Treating Hinglish as a novelty/joke", "whyItRuins": "Vernacular is the core infrastructure play, not a gimmick.", "category": "density" },
+    { "mode": "Ignoring the developer API story", "whyItRuins": "Half the audience is developers. The Python/JS snippets are a differentiator.", "category": "layout" },
+    { "mode": "Stock call center imagery", "whyItRuins": "Bolna replaces call centers. Showing headsets = the old world.", "category": "asset" },
+    { "mode": "Static benefit cards with no motion", "whyItRuins": "A voice company's video must feel alive — waveforms, pulses, response animations.", "category": "motion" }
+  ],
+  "palette": {
+    "canvas": "#0A0F1A",
+    "ink": "#FFFFFF",
+    "primary": "#131B2E",
+    "accent": "#2DD4BF",
+    "secondary": "#575757"
+  }
+}

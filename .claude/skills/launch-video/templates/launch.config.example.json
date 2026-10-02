@@ -1,0 +1,31 @@
+{
+  "_doc": "One per video, in the project root. Everything a launch video's audio needs, as data. Copy, then edit. All frame numbers are 1-based and match STORYBOARD.md / SCRIPT.md.",
+  "voice": {
+    "id": "dXtC3XhB9GtPusIpNtQx",
+    "name": "hale",
+    "respell": { "BrandName": "Brand Name" },
+    "settings": { "stability": 0.45, "similarity_boost": 0.75, "style": 0.15 }
+  },
+  "audio": {
+    "lead":    { "1": 0.3 },
+    "targets": { "1": 4.9, "2": 6.5, "3": 6.0 }
+  },
+  "sfx": {
+    "cues": [
+      [1, 0.74, "tap", 0.3],
+      [3, 2.63, "click", 0.35]
+    ],
+    "recipes": [
+      { "type": "stagger", "frame": 2, "t0": 0.14, "n": 3, "step": 0.13, "offset": 0.05, "names": ["pop2", "pop2a", "pop2b"], "vol": 0.3 }
+    ]
+  },
+  "bgm": {
+    "src": "~/Downloads/your-track.mp3",
+    "start": 0,
+    "volume": 0.115,
+    "lead": 0.3,
+    "fade_in": 1.4,
+    "fade_out": 2.6,
+    "query": "why this track, and its licence note"
+  }
+}

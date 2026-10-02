@@ -1,0 +1,6 @@
+{
+  "_doc": "Tiers change how much TASTE iteration runs, never the deterministic floor: every tier must pass the machine axes. `model_hint`/`effort_hint` are suggestions; the customer picks the model. vision_rounds = structured review rounds an agent must log (quality/review/round-N.json).",
+  "fast":     {"machine_min": 8, "vision_rounds": 0, "vision_min": 0, "label": "PREVIEW", "render": "draft 30 fps, no subframes", "model_hint": "any (a cheaper/faster model is fine)", "effort_hint": "medium", "note": "machine gates only: a playable preview, NOT reviewed for taste"},
+  "standard": {"machine_min": 8, "vision_rounds": 1, "vision_min": 7, "label": "SHIP",    "render": "final 60 fps x 4 subframes", "model_hint": "a strong general model", "effort_hint": "high", "note": "one structured review round, fix the 3 worst, every vision axis >= 7"},
+  "studio":   {"machine_min": 8, "vision_rounds": 3, "vision_min": 8, "label": "SHIP",    "render": "final 60 fps x 4 subframes", "model_hint": "the strongest model", "effort_hint": "xhigh / max", "note": "3+ rounds, every axis >= 8, each round must show its previous problems fixed"}
+}

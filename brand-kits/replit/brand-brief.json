@@ -1,0 +1,73 @@
+{
+  "brand": "Replit",
+  "url": "https://replit.com/",
+  "category": "AI app & website builder (vibe-coding platform)",
+  "markLogic": {
+    "description": "Wordmark 'Replit' + name derives from REPL acronym (Read-Eval-Print-Loop).",
+    "encoding": "The product is the loop: describe -> build -> run -> iterate, closing back on itself.",
+    "diagramReading": "If the mark were a diagram of the product, it would be an infinite loop with an idea entering one end and a shipped app exiting the other — returning to seed the next idea."
+  },
+  "invertedClaim": "Unlike coding tools that assume you already know how to code, Replit removes the barrier entirely — describe an idea and the app is built, deployed, and live.",
+  "tension": {
+    "says": "Turn ideas into apps in minutes — no coding needed.",
+    "shows": "Agent writes production-ready code with full-stack infrastructure (auth, database, hosting, monitoring), 100+ integrations, and enterprise controls (SSO/SAML, SOC 2).",
+    "whichIsMoreTrue": "shows"
+  },
+  "visualRules": [
+    {
+      "rule": "Dark canvas as the default ground; light/inks only on the inverse."
+    },
+    {
+      "rule": "Kind type does the work; big confident statements over photography."
+    },
+    {
+      "rule": "One voltage accent carries every 'action' moment; it never floods a scene."
+    },
+    {
+      "rule": "The loop motif lives in structure (state-to-state return), not decoration."
+    },
+    {
+      "rule": "Proof beats claims: show the app built and shipped; never a static benefit sentence."
+    },
+    {
+      "rule": "Whitespace is authority: dense for feature tours, sparse for the hook and the close."
+    }
+  ],
+  "motionInference": {
+    "entryDirection": "element materializes from depth / appears (chat-to-app)"
+  },
+  "failureModes": [
+    {
+      "mode": "Generic AI slideshow (purple gradients, robot emoji, 'AI!' everywhere)",
+      "whyItRuins": "Reduces Replit to a thousand identical AI-builder ads.",
+      "category": "motion"
+    },
+    {
+      "mode": "Fintech blue/green dashboard look",
+      "whyItRuins": "Betrays the building tool identity.",
+      "category": "colour"
+    },
+    {
+      "mode": "Retro 90s terminal green-on-black cliché",
+      "whyItRuins": "Kitschy, not Replit; dev nostalgia without the ship-it energy.",
+      "category": "asset"
+    },
+    {
+      "mode": "Founder-story navel-gazing beat",
+      "whyItRuins": "Replit is a ship-it tool; mythic narrative kills momentum.",
+      "category": "density"
+    },
+    {
+      "mode": "Letting 'no coding' stand as a static sentence",
+      "whyItRuins": "Hides the actual product: an app conjured and shipped.",
+      "category": "layout"
+    }
+  ],
+  "palette": {
+    "canvas": "#0D0E11",
+    "ink": "#F4F4F5",
+    "primary": "#1E1E22",
+    "accent": "#6E5CE6",
+    "secondary": "#A1A1AA"
+  }
+}

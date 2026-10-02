@@ -1,0 +1,26 @@
+{
+  "_doc": "Every axis is scored 1-10. `machine` axes are computed from the render (scripts/machine_scores.py). `vision` axes are scored by the reviewing agent after LOOKING at the sheets (references/review-protocol.md). Anchors say what a 2 / 5 / 8 / 10 looks like so scores stay comparable across reviewers and models.",
+  "machine": {
+    "hook":      {"title": "Hook speed",          "question": "How soon does the first real change (a morph, cut or big move, not an idle pulse) start?"},
+    "dead_time": {"title": "No dead stretches",   "question": "Longest run with almost nothing changing on screen."},
+    "variety":   {"title": "New thing every 2-4 s","question": "Longest gap between real events (start, events, end)."},
+    "loop_seam": {"title": "Loop seam",           "question": "Last frame -> first frame vs ordinary frame steps (only when the profile says the film loops)."},
+    "beat_alive":{"title": "Every beat alive",    "question": "Share of beats with visible change (only when a bpm is given)."},
+    "technical": {"title": "Technical checks",    "question": "Project lint / layout / contrast (only with --run-check)."},
+    "audio":     {"title": "Audio numbers",       "question": "video-critique audio checks: levels, density, opening, loudness (skipped for silent films). Says nothing about taste: never heard by the machine."}
+  },
+  "vision": {
+    "first_2s":         {"title": "First 2 seconds",      "question": "Look at hook.png. Is the first frame striking and clear, and is the value or the action visible within 2 s?",
+                          "anchors": {"2": "empty or a logo sitting still", "5": "clear but generic, could be any product", "8": "specific and moving, the viewer knows what this is", "10": "you would stop scrolling"}},
+    "phone_readability":{"title": "Phone readability",    "question": "Look at phone.png (360 px wide). Can the primary text and numbers be read at a glance? Note anything under about 10 px tall at that size.",
+                          "anchors": {"2": "primary text unreadable", "5": "readable but small or low contrast in places", "8": "all primary text clear, only decoration is small", "10": "everything readable without squinting"}},
+    "motion_quality":   {"title": "Motion quality",       "question": "Look at strip-*.png. Do things ease with mass, arrive together, avoid overlaps, pops and sliding, and does blur only appear on motion?",
+                          "anchors": {"2": "pops, overlaps or linear slides", "5": "smooth but mechanical", "8": "physical and consistent, no artefacts", "10": "feels expensive, every move motivated"}},
+    "composition":      {"title": "Composition",          "question": "Look at contact.png. Balance, use of the frame, safe zones, dead space, hierarchy.",
+                          "anchors": {"2": "content cropped or lost", "5": "fine but lots of dead space or crowded", "8": "deliberate, well balanced", "10": "poster-quality frames"}},
+    "brand_accuracy":   {"title": "Brand accuracy",       "question": "Do palette, type, tone, UI and copy match this brand (not a previous video, not a generic default)? Are invented numbers labelled?",
+                          "anchors": {"2": "wrong or borrowed look", "5": "generic but not wrong", "8": "clearly this brand, claims labelled", "10": "indistinguishable from the brand's own team"}},
+    "message_clarity":  {"title": "Message clarity",      "question": "After one watch, could a stranger say what the product does / what to do next? Is the ask or payoff visible?",
+                          "anchors": {"2": "unclear what it is", "5": "gets the topic, not the value", "8": "value and next step are clear", "10": "the value lands in one sentence"}}
+  }
+}
