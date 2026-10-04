@@ -1,0 +1,15 @@
+{
+  "_note": "Measured BY HAND on the Inktober 'Relic' reference (2026-10-03): ffprobe, per-frame motion table, exact-frame dumps, pixel measurements, spectrogram. The analyzer must reproduce it.",
+  "cuts": [61, 108, 220, 291, 352, 358],
+  "scene_count": 6,
+  "transitions": [{"start_frame": 352, "frames": 6, "bg": "#2E2C2F"}],
+  "scene_bg": ["#FDFDFD", "#131114", "#1A4D3D", "#1B224F", "#FDFDFD", "#FDFDFD"],
+  "scene3_loop_frames": [20, 23],
+  "scene4_step_fps": 8,
+  "scene6_static": true,
+  "bpm": [93, 95],
+  "lufs": [-15.2, -14.4],
+  "voice_over": "no",
+  "text_contains": {"3": "relinquere", "4": "relic", "6": "shorter way to tell it"},
+  "tier": "type-graphics"
+}

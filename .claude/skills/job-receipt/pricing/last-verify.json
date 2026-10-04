@@ -1,0 +1,8 @@
+{
+ "date": "2026-10-04",
+ "records": 26,
+ "exact": 23,
+ "within_tolerance": 26,
+ "max_abs_diff_usd": 0.0593,
+ "method": "Claude Code cost-state token counts re-priced with pricing.json (cache writes at the 1-hour rate)"
+}

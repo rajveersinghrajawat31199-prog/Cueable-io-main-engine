@@ -26,13 +26,14 @@ edit; do not re-interview.
 | captions / graphic overlays on existing footage | `recut` | `/embedded-captions` or `/talking-head-recut` | stock |
 | a <10s kinetic type / stat / logo sting | `motion-graphic` | `/motion-graphics` | stock |
 | a deck | `deck` | `/slideshow` | stock |
+| a REFERENCE VIDEO the user wants recreated in their own brand and message (product use case 3) | `reference-recreation` | `/reference-recreation`: analyzer first (seconds), then the build route its `reference-style.json` points to | **analyzer built + regression-tested on 5 videos; component kit, auto-compare and series reuse not built yet** |
 Ambiguous ("a video for my product")? Ask ONE question: *is this a launch/promo film, a single-workflow demo, or a short ad?*
 
 ## 2. Ask only what is missing (one message, <=5 items)
 1. **Product + source**: URL, and does the user have real UI (screenshots/recording)? If not: "we will design the UI from your product description and mark it illustrative; real screens later replace it".
 2. **Hero use case** (the one story the film leads with) and **3-4 proof points** (order = priority), plus the **tagline/CTA** wording.
 3. **Assets**: exact logo file (say which background it is for), brand fonts/colours, product/ad imagery, **theme** (light/dark).
-4. **Reference** (optional): a video whose *structure* they like. We take structure, never copy or style.
+4. **Reference** (optional): a video whose *structure* they like. We take structure, never copy or style. EXCEPTION, use case 3: when the user asks for the reference's own style, copy its grammar (rhythm, type roles, motion, colour blocking), never its artwork, sentences or audio: `/reference-recreation`.
 5. **Length + destination** (default 60s, 16:9, YouTube) and **music**: ask, and give the search brief (`/launch-video` -> `references/music-brief.md`) if they need to find one.
 Non-negotiables to record if stated: things that must/must not appear, competitor names, unreleased features.
 

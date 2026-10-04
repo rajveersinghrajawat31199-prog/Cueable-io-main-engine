@@ -7,7 +7,8 @@
   stage_timer.py report [--project .]                                                 table, time to first preview, total, cost
 
 Log: <project>/quality/timing.jsonl. Tokens come from whoever calls the model (the SaaS backend's API usage fields, or the
-agent). Nothing here can see them: no tokens logged = no cost line, never a guess. Prices: prices.json (Sonnet 5.5 is null: set it).
+agent). Nothing here can see them: no tokens logged = no cost line, never a guess. Prices: prices.json, generated from the pricing sheet by
+job-receipt/scripts/pricing_from_sheet.py (do not edit by hand). Input + output tokens only: for cache-aware dollars per job use job_receipt.py.
 """
 import argparse, json, os, subprocess, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
