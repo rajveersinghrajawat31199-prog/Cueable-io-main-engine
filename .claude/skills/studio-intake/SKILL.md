@@ -23,7 +23,8 @@ edit; do not re-interview.
 | a short paid-social / performance ad for ANY platform (hook -> proof -> one ask, silent-first, 6-30s), or "ads for LinkedIn/Meta" | `ad-creative` | **LinkedIn ads with no brief yet -> `linkedin-performance-marketer` agent FIRST** (writes `ad-brief.json`), then `/ad-creative` (universal playbook + platform adapter + `/quality-gate --profile ad-creative`) | **playbook, gate profile, LinkedIn adapter + agent built and tested piecewise; no ad video produced end to end yet**; Meta agent/adapter later |
 | a brand / mood film from a brand brief | `brand-film` | `/brand-brief-video` (existing 7-stage pipeline) | existing |
 | an explainer from text/topic/article | `explainer` | `/faceless-explainer` | stock |
-| captions / graphic overlays on existing footage | `recut` | `/embedded-captions` or `/talking-head-recut` | stock |
+| a CREATOR-LED short: a talking-head clip (+ optional b-roll, music) cut, typeset and sound-designed for Reels / Shorts / TikTok | `creator-reel` | `/creator-reel` (tools.json registry, `new_project.py` scaffold, ASR adapter with acceptance test) | **built, proven on one 72 s Hinglish reel (4 review rounds)**; gaps: b-roll finder, matting, forced alignment, SFX curation |
+| plain captions / graphic overlays on existing footage (clip untouched, no cutting) | `recut` | `/embedded-captions` or `/talking-head-recut` | stock |
 | a <10s kinetic type / stat / logo sting | `motion-graphic` | `/motion-graphics` | stock |
 | a deck | `deck` | `/slideshow` | stock |
 | a REFERENCE VIDEO the user wants recreated in their own brand and message (product use case 3) | `reference-recreation` | `/reference-recreation`: analyzer first (seconds), then the build route its `reference-style.json` points to | **analyzer built + regression-tested on 5 videos; component kit, auto-compare and series reuse not built yet** |

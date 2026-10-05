@@ -50,3 +50,8 @@ renders/
 
 # ── Machine-local preview config (points at whichever video was last previewed) ──
 /.claude/launch.json
+
+# local tools (binaries, 1 GB models) and scratch
+tools/vibe/vibe-server
+tools/vibe/models/
+tools/_scratch/

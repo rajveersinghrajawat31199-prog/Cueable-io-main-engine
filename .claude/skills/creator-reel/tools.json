@@ -1,0 +1,37 @@
+{
+  "_doc": "Tool registry for creator-led reels. ONE slot per pipeline stage. Rule: before writing any code for a stage, use the slot's `use_first`; if you must deviate, log one line in videos/<p>/DEVIATIONS.md and tell the user at hand-off. When the user brings a new tool: add it under `installed` with its verdict from a bake-off on the same clip, then change `order`. `check` strings: path:<file> | env:<VAR> (also looked up in ~/.config/hyperframes/secrets.env, never printed) | cmd:<binary> | engine:<hyperframes subcommand> | none.",
+  "updated": "2026-10-04",
+  "slots": {
+    "asr": {
+      "purpose": "word-level transcript with timings (analysis/words.json)",
+      "use_first": "scripts/transcribe.py (adapter: runs the engines in `order`, applies the acceptance test, logs analysis/asr_log.json)",
+      "order": {
+        "en": ["hyperframes", "whisper-py", "scribe"],
+        "default": ["scribe"]
+      },
+      "order_note": "Non-English order comes from the 2026-10-04 Hinglish bake-off below. The engine's own `hyperframes transcribe` defaults to English-only whisper.cpp models; with -m large-v3 it is the same engine class as vibe-server, so expect the same Hinglish weakness. Insert the user's new engine FIRST once it beats these on the bake-off.",
+      "accept": "scripts/asr_coverage.py: >=97% of speech frames covered by words, no uncovered speech run > 2 s, no 'subscribe'-style ghosts",
+      "installed": [
+        {"name": "ElevenLabs Scribe v1", "kind": "cloud, paid", "check": "env:ELEVENLABS_API_KEY", "verdict": "reference quality on Hinglish; word times; cents per clip"},
+        {"name": "openai-whisper (python) small", "kind": "local", "check": "path:~/.venvs/asr/bin/whisper", "verdict": "Hindi-word recall 42% vs Scribe, 19 s missing: unusable for Hindi, fine for English"},
+        {"name": "hyperframes transcribe (whisper.cpp, optional Parakeet)", "kind": "engine", "check": "engine:transcribe", "verdict": "not run on Hinglish; default model small.en is English-only; Parakeet via `hyperframes models install parakeet`"},
+        {"name": "vibe-server 0.6.10 + whisper large-v3 q5_0 (thewh1teagle/vibe, MIT)", "kind": "local", "check": "path:tools/vibe/vibe-server", "verdict": "2026-10-04 bake-off on the 72 s Hinglish clip: Hindi-word recall 23-24% vs Scribe (0% with auto-language), 4-6 'subscribe' hallucinations, API returns segments only (no word times), CLI word mode corrupts Devanagari bytes, CPU-only here (Metal init failed) about 2x slower than realtime. Not adopted. Same-class engine as hyperframes transcribe."}
+      ],
+      "candidates": ["WhisperX + wav2vec2 forced alignment", "faster-whisper large-v3 with VAD + prompt", "AI4Bharat Indic ASR models", "NVIDIA NeMo / Parakeet (Hindi coverage unverified)", "user-supplied repo (pending)"]
+    },
+    "forced_alignment": {"purpose": "exact word boundaries inside continuous speech", "use_first": "none yet (energy edges in scripts/edl_lib.py)", "status": "missing", "candidates": ["Montreal Forced Aligner", "ctc-forced-aligner", "WhisperX alignment"]},
+    "vad": {"purpose": "speech / silence map", "use_first": "scripts/edl_lib.py (numpy energy envelope, quiet-run edges)", "status": "custom, works on clean voice", "candidates": ["Silero VAD", "auto-editor"]},
+    "ocr": {"purpose": "find numbers/text on screen in b-roll (e.g. the cart total that matches a spoken price)", "use_first": "none yet; today: look at contact sheets", "status": "missing", "candidates": ["Apple Vision (.claude/skills/reference-recreation/scripts/ocr.swift exists)", "PaddleOCR", "EasyOCR", "Tesseract"]},
+    "scene_detect": {"purpose": "shot boundaries in b-roll", "use_first": "none yet", "status": "missing", "candidates": ["PySceneDetect"]},
+    "clip_search": {"purpose": "'find the moment that shows X' in b-roll", "use_first": "none yet", "status": "missing", "candidates": ["open_clip / SigLIP frame embeddings"]},
+    "matting": {"purpose": "subject cut-out for text-behind-subject", "use_first": "hyperframes remove-background (engine, local model)", "check": "engine:remove-background", "status": "engine tool present, untested on this footage", "candidates": ["RobustVideoMatting", "BiRefNet", "SAM 2"]},
+    "tracking": {"purpose": "auto-follow crops on hand-held footage", "use_first": "none yet (card-mode crops tolerate drift)", "status": "missing", "candidates": ["OpenCV trackers", "SAM 2"]},
+    "beats": {"purpose": "beat / downbeat / drum-entrance of the music", "use_first": "hyperframes beats (engine), then scripts/bgm_analyze.py to read band onsets", "check": "engine:beats", "status": "engine tool not yet compared with bgm_analyze.py", "candidates": ["madmom", "librosa", "beat_this"]},
+    "stems": {"purpose": "remove vocals so any song is a clean bed", "use_first": "none yet", "status": "missing", "candidates": ["Demucs"]},
+    "denoise": {"purpose": "noisy creator audio", "use_first": "none yet (ffmpeg highpass only)", "status": "missing", "candidates": ["DeepFilterNet", "RNNoise"]},
+    "loudness": {"purpose": "voice and mix loudness", "use_first": "ffmpeg loudnorm (single pass) in scripts/cut_master.py; ebur128 in scripts/build_audio.py", "check": "cmd:ffmpeg", "status": "works", "candidates": ["pyloudnorm (2-pass)", "pedalboard"]},
+    "sfx": {"purpose": "soft word-accent sounds only (no transition whooshes)", "use_first": "scripts/prep_sfx.py (local Kenney CC0 + Sonniss library, ~/hyperframes-assets/sfx) or the user's picks from videos/hyrox-creator-reel/sfx-sampler", "check": "path:~/hyperframes-assets/sfx/_index/search.py", "status": "works; no way to judge by ear, user picks from a numbered sampler", "candidates": ["Freesound CC0", "CLAP audio-embedding search"]},
+    "render": {"purpose": "composition to mp4", "use_first": "npx hyperframes@0.8.113 render -o exports/<name>.mp4 (run it as the background command itself)", "check": "engine:render", "status": "works, 3-4 min per 72 s"},
+    "qa": {"purpose": "objective checks before the user sees a cut", "use_first": "hyperframes check; video-critique (--allow-edge for full-bleed footage); quality-gate run_gate.sh; frame strips at every special moment", "check": "path:~/.claude/skills/video-critique/scripts/critique.py", "status": "works"}
+  }
+}
