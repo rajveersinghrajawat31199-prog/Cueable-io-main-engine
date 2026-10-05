@@ -17,7 +17,7 @@ For any **fresh** "make a video / launch video / demo / ad" request, start at **
 - other formats → the stock skills listed below (intake's table says which, and which formats have no playbook yet).
 - **Editing an existing project** (BRIEF.md / hyperframes.json present) → skip intake; just do the edit.
 
-- **a reference video to recreate in the user's brand** ("make it like this", use case 3) → **`/reference-recreation`**: run its analyzer first (`reference-style.json` in seconds); never hand-measure a reference again.
+- **a reference video to recreate in the user's brand** ("make it like this", use case 3) → **`/reference-recreation`**: read its **Fast path** first (ask Faithful vs Exact and state the cost), run the analyzer, then for Exact `measure.py` → `beatwarp.py` → `build_from_spec.py` → restyle → `fidelity.py`; never hand-measure a reference and never compare 360 px tiles.
 
 Studio rules for every video: **every job opens with `job_receipt.py start` and its final message carries `job_receipt.py report` (time, tokens, dollars from the pricing sheet, credits: `/job-receipt`)**; designed fresh for the brand (a previous video is a process reference, never a style source); the critic (`/video-critique`) runs before the user sees any cut and the final message says audio/taste are unverified by ear; **never edit an upstream skill during a video** (`HYPERFRAMES_SKIP_SKILLS=1`); engine improvements go in `.claude/skills/` here and are proposed at the end of a video.
 

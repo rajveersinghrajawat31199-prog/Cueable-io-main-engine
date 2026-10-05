@@ -442,6 +442,22 @@ def main():
             else:
                 i += 1
         lag, acv = periodicity(ds)
+        # a REAL stepped animation (on twos, on threes, 8 fps ...) alternates a spike of change with 1-3 near-repeat frames, all the way through its motion. A periodic pattern alone
+        # (compression, easing) is not stepping, and soft low-contrast motion must not read as stepping either. Everything is relative to the scene's own p90 (noise differs per encode).
+        p90_ = float(np.percentile(ds, 90)) if len(ds) else 0.0
+        repeat_share, stepped = None, False
+        if len(ds) >= 12 and p90_ >= 0.3:
+            sm_ = np.convolve(ds, np.ones(9) / 9, mode="same")
+            act_ = sm_ > 0.25 * p90_
+            if int(act_.sum()) >= 9:
+                low_ = ds[act_] < 0.4 * p90_
+                repeat_share = float(low_.mean())
+                trans_ = float(np.abs(np.diff(low_.astype(int))).sum() / max(1, len(low_) - 1))
+                run_ = best_ = 0
+                for v_ in low_:
+                    run_ = run_ + 1 if v_ else 0
+                    best_ = max(best_, run_)
+                stepped = bool(repeat_share >= 0.30 and trans_ >= 0.35 and best_ <= 5)
         changed_frac = float((ds > 0.2).mean()) if len(ds) else 0.0
         # activity box
         if b0 - a0 > 1:
@@ -461,7 +477,7 @@ def main():
         loop_lag, loop_ratio = (None, 1.0) if static else content_period(g[a0:b0], abox)
         if loop_lag and loop_ratio < 0.6:
             tags.append("loop(period=%df=%.2fs)" % (loop_lag, loop_lag / fps))
-        if not static and lag and acv > 0.3 and 2 <= lag <= 4 and changed_frac < 0.7 and float(ds.max()) > 0.6:
+        if not static and stepped and lag and acv > 0.3 and 2 <= lag <= 4 and changed_frac < 0.7 and float(ds.max()) > 0.6:
             tags.append("step-cadence(%dfps)" % round(fps / lag))
         if bursts and "static-hold" not in tags:
             tags.append("%d-burst(s)" % len(bursts))
@@ -472,7 +488,7 @@ def main():
                            duration_s=round((b0 - a0) / fps, 3), bg=hexc(bgc), bg_flat=bool(bflat[a0:b0].mean() > 0.8),
                            brightness=round(float(g[a0:b0].mean()), 1), palette=palette,
                            motion=dict(mean_diff=round(float(ds.mean()), 2), p90_diff=round(float(np.percentile(ds, 90)), 2), static_share=round(float((ds < 0.6).mean()), 2),
-                                       effective_fps=round(fps * changed_frac, 1), step_period_frames=lag if (lag and acv > 0.3 and lag <= 4) else None,
+                                       effective_fps=round(fps * changed_frac, 1), step_period_frames=lag if (stepped and lag and acv > 0.3 and lag <= 4) else None, repeat_share_in_motion=None if repeat_share is None else round(repeat_share, 2),
                                        loop_period_frames=loop_lag if (loop_lag and loop_ratio < 0.6) else None, loop_ratio=round(loop_ratio, 2), bursts=bursts[:12], activity_box=abox, fade_in=fade_in),
                            tags=tags, key_frames=dict(best=best, last=last)))
     merged = []

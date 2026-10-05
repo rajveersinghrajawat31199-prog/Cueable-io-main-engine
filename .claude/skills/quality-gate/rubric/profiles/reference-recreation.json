@@ -1,0 +1,120 @@
+{
+  "_doc": "Reference-recreation reels (use case 3): same score curves as default. The critic is run with --allow-edge and two warning classes are declared intentional (see machine.audio.why). Every other warning still counts.",
+  "format": "reference-recreation",
+  "loop": false,
+  "machine": {
+    "hook": {
+      "event_frac": 0.018,
+      "curve": [
+        [
+          0.5,
+          10
+        ],
+        [
+          1.5,
+          8
+        ],
+        [
+          3.0,
+          5
+        ],
+        [
+          6.0,
+          1
+        ]
+      ]
+    },
+    "dead_time": {
+      "still_frac": 0.00024,
+      "curve": [
+        [
+          0.5,
+          10
+        ],
+        [
+          1.2,
+          8
+        ],
+        [
+          2.5,
+          4
+        ],
+        [
+          5.0,
+          0
+        ]
+      ]
+    },
+    "variety": {
+      "event_frac": 0.006,
+      "curve": [
+        [
+          2.5,
+          10
+        ],
+        [
+          4.0,
+          8
+        ],
+        [
+          6.0,
+          5
+        ],
+        [
+          10.0,
+          1
+        ]
+      ]
+    },
+    "loop_seam": {
+      "curve": [
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          8,
+          0
+        ]
+      ]
+    },
+    "beat_alive": {
+      "curve": [
+        [
+          0.5,
+          0
+        ],
+        [
+          0.8,
+          4
+        ],
+        [
+          0.95,
+          8
+        ],
+        [
+          1.0,
+          10
+        ]
+      ]
+    },
+    "audio": {
+      "critic_args": [
+        "--allow-edge"
+      ],
+      "ignore": [
+        "no voice track",
+        "sfx @ 0.00s"
+      ],
+      "why": "reference-recreation playbook: the reference's own grammar is full-bleed type, cards that bleed off the frame and ripples that cross the edge, so edge contact is intended (--allow-edge); the reel has no voice-over, and a single-file SFX mix makes the critic read one cue at 0.00 s. Every other audio or critic warning still counts."
+    }
+  }
+}
