@@ -21,6 +21,8 @@ For any **fresh** "make a video / launch video / demo / ad" request, start at **
 
 - **a reference video to recreate in the user's brand** ("make it like this", use case 3) → **`/reference-recreation`**: read its **Fast path** first (ask Faithful vs Exact and state the cost), run the analyzer, then for Exact `measure.py` → `beatwarp.py` → `build_from_spec.py` → restyle → `fidelity.py`; never hand-measure a reference and never compare 360 px tiles.
 
+- **a vertical / 9:16 / Reels / Shorts / 4:5 / square version of an already-built horizontal film** → **`/aspect-recompose`** (`.claude/skills/aspect-recompose`): sibling project `videos/<p>-9x16`, audio + timing reused, only layout rewritten per scene, true-aspect snapshots, critic-gated. Never crop the master. Offer it (one question) at delivery of every 16:9 film.
+
 Studio rules for every video: **every job opens with `job_receipt.py start` and its final message carries `job_receipt.py report` (time, tokens, dollars from the pricing sheet, credits: `/job-receipt`)**; designed fresh for the brand (a previous video is a process reference, never a style source); the critic (`/video-critique`) runs before the user sees any cut and the final message says audio/taste are unverified by ear; **never edit an upstream skill during a video** (`HYPERFRAMES_SKIP_SKILLS=1`); engine improvements go in `.claude/skills/` here and are proposed at the end of a video.
 
 ## Skills — USE THESE FIRST

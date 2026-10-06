@@ -36,6 +36,7 @@ Ambiguous ("a video for my product")? Ask ONE question: *is this a launch/promo 
 3. **Assets**: exact logo file (say which background it is for), brand fonts/colours, product/ad imagery, **theme** (light/dark).
 4. **Reference** (optional): a video whose *structure* they like. We take structure, never copy or style. EXCEPTION, use case 3: when the user asks for the reference's own style, copy its grammar (rhythm, type roles, motion, colour blocking), never its artwork, sentences or audio: `/reference-recreation`.
 5. **Length + destination** (default 60s, 16:9, YouTube) and **music**: ask, and give the search brief (`/launch-video` -> `references/music-brief.md`) if they need to find one.
+6. **Other aspect ratios**: ask once, *"Do you also want a vertical (9:16) version for Reels/Shorts?"* (and 4:5/square if relevant). If yes, finish and approve the 16:9 master first, then run `/aspect-recompose` on it (reuses audio + timing; layout only). Record `also: [9:16]` in BRIEF.md.
 Non-negotiables to record if stated: things that must/must not appear, competitor names, unreleased features.
 
 Do NOT ask about things you can decide with a receipt (fonts, motion, layout). Recommend, with the reason.
