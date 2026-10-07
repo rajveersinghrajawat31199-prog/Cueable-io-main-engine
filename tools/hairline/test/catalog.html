@@ -1,0 +1,20 @@
+<!doctype html><meta charset="utf-8"><title>Hairline catalog</title>
+<style>body{margin:0;background:#f4f4f6;font:12px system-ui;padding:16px}
+.g{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.c{background:#fff;border:1px solid #ddd;padding:6px}
+.c b{display:block;margin:2px 0 4px}.f{width:100%}
+body.dark{background:#0d0d0f}.dark .c{background:#111;border-color:#333;color:#ccc}</style>
+<div class="g" id="g"></div>
+<script>document.write('<script src="../dist/hairline.bundle.js?v='+Date.now()+'"><\/script>')</script>
+<script>
+const q=new URLSearchParams(location.search), T=parseFloat(q.get('t')||'0'), mode=q.get('mode')||'sweep';
+if(q.get('dark')){document.body.classList.add('dark')}
+const H=Hairline.scene(), g=document.getElementById('g');
+const GJ=fetch('../gestures.json',{cache:'no-store'}).then(r=>r.json());
+GJ.then(GS=>{
+Hairline.names.forEach((n,i)=>{const c=document.createElement('div');c.className='c';c.innerHTML='<b>'+n+'</b><div class="f" id="f-'+n+'"></div>';g.appendChild(c);
+ let path;
+ if(mode==='preset'){const gg=GS[n];path=gg.path.map(([u,x,y])=>({t:u*4,x,y}));path.push({t:gg.leave_at*4,leave:true});}
+ else path = mode==='rest'?[]:[{t:.2,x:.25,y:.3},{t:1.2,x:.75,y:.7},{t:2.2,x:.4,y:.4},{t:3,x:.7,y:.25}];
+ H.add('#f-'+n,n,{intensity:.6,theme:q.get('dark')?'dark':'light',path});});
+window.H=H; window.ready=true; H.seek(T);});
+</script>

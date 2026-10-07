@@ -31,13 +31,13 @@ pipeline's defaults fail for a rebuilt-UI launch video, this playbook names the 
 | 0 | Intake | `BRIEF.md` (`format: launch-video`) | `/studio-intake`. Ask for hero use case, 3-4 proof points, tagline, UI source. |
 | 1 | Source | `capture/` | Fallback ladder below. Live capture of WebGL-heavy sites can hang: it is a hard stop, ask before substituting. |
 | 2 | Design system | `frame.md` | `build-frame.mjs` remixes from the site's *dominant* colours: **verify the canvas/ink/accent against the brief's theme and hand-correct**. `references/design-system.md` |
-| 3 | Story ◆ | `STORYBOARD.md` + `SCRIPT.md` | Value claim by beat 2. One idea per frame. Per-frame `ui:` block. `references/story-grammar.md` |
+| 3 | Story ◆ | `STORYBOARD.md` + `SCRIPT.md` | Value claim by beat 2. One idea per frame. Per-frame `ui:` block. `references/story-grammar.md`. If BRIEF has `figures:`, give each a frame slot (hook / metaphor between UI frames / section break / end) and write `ui: hairline <name>` + the gesture in that frame. |
 | 4 | Sketch sheet ◆ | `storyboard.html` | Static layouts with real fonts/copy. Revise only named frames. |
 | 5 | Audio | `audio_meta.json`, `assets/vo/` | One continuous take. `scripts/gen_vo.py` -> `scripts/pad_vo.py` -> `audio.mjs sync-durations`. `references/audio.md` |
 | 6 | Calibrate ◆ | 2-3 frames + draft render | Build the frames that SET the UI standard (usually the first UI frames, not the logo/cards). Render, critique, get approval before propagating. |
-| 7 | Propagate | all frames | Reuse the calibrated standard. `scripts/lv_lib.py` for wrap/caption/cursor helpers. |
+| 7 | Propagate | all frames | Reuse the calibrated standard. `scripts/lv_lib.py` for wrap/caption/cursor helpers. Figure frames: `/hairline-figures` (`hairline_scene.py make`, colours from `frame.md`; cursor path to `/oversized-cursor` when the beat is UI-driven). |
 | 8 | Sound | SFX + music | `scripts/gen_sfx.py` (config-driven), `scripts/measure_music.py` to choose a bed. Ask before adding music; `references/music-brief.md` has the keywords. |
-| 9 | Final | `renders/*.mp4` | `scripts/build_all.sh <project> --render high`. lint + check + snapshots + critique. |
+| 9 | Final | `renders/*.mp4` | `scripts/build_all.sh <project> --render high`. lint + check + snapshots + critique. With figures also run `python3 tools/hairline/check_figures.py renders/<x>.mp4 <project>` (all PASS). |
 
 ### Source fallback ladder (URL-only briefs)
 1. User-supplied screenshots / recording (best; always ask). 2. Public pages, docs, an earlier capture of the same URL

@@ -4,7 +4,7 @@
 
 - **Work only inside this folder.** Every video is `videos/<project>/`. Start new ones there. Do not search the home directory.
 - **Never open or scan** `~/hyperframes` (engine source clone, 2 GB with node_modules) or `~/hyperframes-assets` (28 GB sound library). The engine is the pinned npm package: use `npx hyperframes ...` from inside a project.
-- **Sound effects:** search, never list folders: `python3 ~/hyperframes-assets/sfx/_index/search.py <terms> --limit 10`. Full usage, licences and ElevenLabs steps: `~/hyperframes-assets/PROMPT-for-new-projects.md`. Copy only the files a project uses into that project's `assets/`.
+- **Sound effects:** search, never list folders: `python3 ~/hyperframes-assets/sfx/_index/search.py <terms> --limit 10`. Full usage, licences and ElevenLabs steps: `~/hyperframes-assets/PROMPT-for-new-projects.md`. Copy only the files a project uses into that project's `assets/`. The index is one consolidated list (kenney, sonniss, **uisfx** = 936 modern CC0 UI sounds: 12 packs x 78 cues, filter with `--source uisfx`; each cue exists in all 12 packs, so pick one pack per video, e.g. `minimal`/`soft`/`glass`). Never clone or scan the source repos (uisfx, soundcn) again; soundcn is 100% duplicates of kenney. Ingest script for new libraries: `tools/sfx/ingest_uisfx.py`. **Creator/social SFX** (reels, shorts): `--source creator` = whooshes, risers, impacts, drops, camera shutters, typing, static, clocks (Social SFX Pack, licence unverified: confirm before client delivery) + Pixabay pops/swooshes/dings/mouse clicks/meme stingers (commercial OK). Script: `tools/sfx/ingest_creator.py`.
 - **Pipeline skills** (`brand-brief-video` and its stages) are in `.claude/skills/` here. Reusable finished scenes go in `scene-library/`, brand configs in `brand-kits/`, starter templates in `templates/`.
 - **Old projects** live in `~/hyperframes-projects/`. Ignore unless the user names one.
 - Per-video `CLAUDE.md` / `AGENTS.md` are duplicates of this file. Do not re-read them.
@@ -44,6 +44,8 @@ Studio rules for every video: **every job opens with `job_receipt.py start` and 
 **Porting an existing composition?** `/remotion-to-hyperframes` translates a Remotion (React) composition into HyperFrames HTML — a source migration, separate from the creation workflows above.
 
 The domain skills (`/hyperframes-core`, `/hyperframes-animation`, `/hyperframes-keyframes`, `/hyperframes-creative`, `/hyperframes-cli`, `/media-use`, `/hyperframes-audio`, `/hyperframes-registry`, `/figma`) and the full capability map live inside `/hyperframes` — it is the single source of truth for which skill handles which intent.
+
+**Need a 3D-looking object that reacts to a cursor** (keyboard, laptop lid, vault, router, terrain; 27 isometric line figures, MIT) in a demo/launch video? → **`/hairline-figures`** (`.claude/skills/hairline-figures`, vendored in `tools/hairline/`): seek-safe driver + scripted pointer path. New custom figure → `/hairline-create`.
 
 **Changing how real footage or images look or reveal?** Load `/media-use` and read its `references/media-treatments.md` before editing, even when the request only says dark, flat, boring, retro, private, or “make the reveal cooler.” It governs how footage is treated, never whether media may be used. Use canonical media treatments and seek-safe motion; do not improvise equivalent CSS/SVG filters or overlays.
 
