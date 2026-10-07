@@ -47,6 +47,8 @@ The domain skills (`/hyperframes-core`, `/hyperframes-animation`, `/hyperframes-
 
 **Need a 3D-looking object that reacts to a cursor** (keyboard, laptop lid, vault, router, terrain; 27 isometric line figures, MIT) in a demo/launch video? → **`/hairline-figures`** (`.claude/skills/hairline-figures`, vendored in `tools/hairline/`): seek-safe driver + scripted pointer path. New custom figure → `/hairline-create`.
 
+**AI / agent / automation / voice product and you want the modern dotted "thinking" orb** (hero, status indicator in rebuilt UI, state sequence)? → **`/thinking-orbs`** (`.claude/skills/thinking-orbs`, vendored in `tools/orbs/`): seek-exact, brand-tinted, auto-picked by intake.
+
 **Changing how real footage or images look or reveal?** Load `/media-use` and read its `references/media-treatments.md` before editing, even when the request only says dark, flat, boring, retro, private, or “make the reveal cooler.” It governs how footage is treated, never whether media may be used. Use canonical media treatments and seek-safe motion; do not improvise equivalent CSS/SVG filters or overlays.
 
 **Need a generated scene image or short video clip** (creative-direction mood frames, storyboard reference images, background plates, b-roll)? Use `/pollo-generate` (`.claude/skills/pollo-generate`, driving the user's own Pollo AI account/credits via the `pollo` CLI) — it is the default generator for this studio. Higgsfield stays available but only for its own dedicated workflows (avatars, ads/Marketing Studio, virality prediction) or when the user names it explicitly.

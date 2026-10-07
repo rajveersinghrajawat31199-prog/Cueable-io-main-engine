@@ -41,10 +41,11 @@ Non-negotiables to record if stated: things that must/must not appear, competito
 
 Do NOT ask about things you can decide with a receipt (fonts, motion, layout). Recommend, with the reason.
 
-## 2b. Visual-object beat (automatic, no question to the user)
+## 2b. Visual-object beats (automatic, no question to the user)
 For `launch-video`, `product-demo` and `brand-film` only: run `python3 tools/hairline/hairline_scene.py pick "<message, proof points, tagline, category>"`.
 If it returns a figure (score >= 4) and the brand tone suits thin isometric line art, add to BRIEF.md under Customizations:
 `figures: [{name: vault, beat: "hook behind the headline", why: "security claim"}]` (0-2 figures). Decision rules, recolour, cursor pairing and the render gate live in `/hairline-figures`; `/launch-video` builds it. State the choice in one line when presenting the storyboard so the user can veto it there. Nothing returned, or a playful/photographic brand: write `figures: none` and move on.
+For AI / agent / automation / voice products also run `python3 tools/orbs/orbs_scene.py pick "<same text>"` (`/thinking-orbs`): if it suggests states, add `orbs: [{states: [searching, solving, composing], beat: "hero hook", why: "agent searches then drafts"}]`; "no orb" -> `orbs: none`. Combined budget with figures: at most 2 decorative objects per 60 s.
 
 ## 3. Write BRIEF.md (stock shape + studio fields)
 ```

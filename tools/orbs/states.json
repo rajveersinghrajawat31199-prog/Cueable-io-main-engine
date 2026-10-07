@@ -1,0 +1,153 @@
+{
+ "ai_gate": [
+  "ai",
+  "agent",
+  "agents",
+  "llm",
+  "copilot",
+  "assistant",
+  "gpt",
+  "chatbot",
+  "automation",
+  "autonomous",
+  "voice agent",
+  "genai",
+  "generative",
+  "model"
+ ],
+ "states": {
+  "working": {
+   "says": "particles on tilted orbits: an agent doing background work",
+   "fits": [
+    "agent",
+    "working",
+    "processing",
+    "autopilot",
+    "jobs",
+    "background",
+    "automation",
+    "runs",
+    "executing"
+   ]
+  },
+  "searching": {
+   "says": "a scan sweeps a dotted globe: search, retrieval, research",
+   "fits": [
+    "search",
+    "retrieval",
+    "research",
+    "discovery",
+    "web",
+    "index",
+    "rag",
+    "browse",
+    "lookup",
+    "find"
+   ]
+  },
+  "solving": {
+   "says": "bands scramble then click back solved: reasoning, debugging, optimizing",
+   "fits": [
+    "solve",
+    "reasoning",
+    "math",
+    "puzzle",
+    "optimize",
+    "debug",
+    "logic",
+    "problem",
+    "analysis",
+    "think"
+   ]
+  },
+  "listening": {
+   "says": "a waveform rolls through rings: voice, audio, calls",
+   "fits": [
+    "voice",
+    "audio",
+    "speech",
+    "call",
+    "calls",
+    "transcribe",
+    "meeting",
+    "podcast",
+    "sound",
+    "listen",
+    "dictation"
+   ]
+  },
+  "connecting": {
+   "says": "a constellation wires itself: integrations, knowledge graph, tools",
+   "fits": [
+    "integrations",
+    "connect",
+    "network",
+    "graph",
+    "knowledge",
+    "sync",
+    "mcp",
+    "tools",
+    "apps",
+    "ecosystem"
+   ]
+  },
+  "weaving": {
+   "says": "three strands plait around a sphere: orchestration, multi-agent, merging",
+   "fits": [
+    "combine",
+    "merge",
+    "orchestrate",
+    "pipeline",
+    "multi-agent",
+    "workflow",
+    "threads",
+    "unify",
+    "compose"
+   ]
+  },
+  "composing": {
+   "says": "an undulating sash: writing, drafting, generating content",
+   "fits": [
+    "write",
+    "draft",
+    "compose",
+    "generate",
+    "content",
+    "creative",
+    "email",
+    "copy",
+    "author",
+    "summarize"
+   ]
+  },
+  "breathing": {
+   "says": "a ring slowly morphing: idle, ready, calm",
+   "fits": [
+    "idle",
+    "ready",
+    "standby",
+    "wellness",
+    "calm",
+    "mindful",
+    "health",
+    "sleep",
+    "meditation"
+   ]
+  },
+  "shaping": {
+   "says": "dotted outline circle -> triangle -> square: building, designing, modelling",
+   "fits": [
+    "design",
+    "build",
+    "shape",
+    "create",
+    "3d",
+    "model",
+    "prototype",
+    "canvas",
+    "cad",
+    "generate"
+   ]
+  }
+ }
+}
